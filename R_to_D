@@ -1,0 +1,72 @@
+Roman Numeral for 1000 = M
+
+Roman Numeral for 1001 = 1000 + 1 = M + I = MI
+
+Roman Numeral for 1002 = 1000 + 2 = M + I + I = MII
+
+Roman Numeral for 1003 = 1000 + 3 = M + I + I + 1= MIII
+
+Roman Numeral for 1004 = 1000 + 4 = M + IV = MIV
+
+Roman Numeral for 1005 = 1000 + 5 = M + V = MV
+
+Roman Numeral for 1006 = 1000 + 6 = M + V + I = MVI
+
+Roman Numeral for 1007 = 1000 + 7 = M + V + I + I = MVII
+
+Roman Numeral for 1008 = 1000 + 8 = M + V + I + I + I = MVIII
+
+Roman Numeral for 1009 = 1000 + 9 = M + IX = MIX
+
+M = 1000
+C = 100
+So, M + C = 1000 + 100 = 1100.
+
+Roman Numeral for 9 = IX
+
+Roman Numeral for 19 = XIX = 10 + 9
+
+Roman Numeral for 29 = XXIX = 10 + 10 + 9
+
+Roman Numeral for 39 = XXXIX = 10 + 10 + 10 + 9
+
+Roman Numeral for 49 = XLIX = 40 + 9
+
+Roman Numeral for 59 = LIX = 50 + 9
+
+Roman Numeral for 69 = LXIX = 50 + 10 + 9
+
+Roman Numeral for 79 = LXXIX = 50 + 10 + 10 + 9
+
+
+
+
+From the following table, find the highest roman numeral (n) with the highest decimal value (v)
+that is taken from the left part of the roman numeral r:
+
+ 
+
+Roman numeral (n)	Decimal value (v)
+I	1
+IV	4
+V	5
+IX	9
+X	10
+XL	40
+L	50
+XC	90
+C	100
+CD	400
+D	500
+CM	900
+M	1000
+ 
+
+Add to the decimal number x the value v of the roman numeral that you found:
+x = x + v
+
+Repeat stages 1 and 2 until you get all the roman numerals of r.
+
+Roman Numeral for 89 = LXXXIX = 50 + 10 + 10 + 10 + 9
+
+Roman Numeral for 99 = XCIX = 90 + 9

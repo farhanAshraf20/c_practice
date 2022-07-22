@@ -3,37 +3,37 @@
  
 union student 
 {
-            char *name;
+            char name[20];
             char subject[20];
             float percentage;
 };
  
 int main() 
 {
-    union student record1;
-    union student record2;
+    union student rec1;
+    union student rec2;
  
     // assigning values to record1 union variable
-       //strcpy(record1.name, "Raju");
-       record1.name = "farhan";
-       strcpy(record1.subject, "Maths");
-       record1.percentage = 86.50;
+       strcpy(rec1.name, "farhan");
+       //rec1.name = "farhan";
+       strcpy(rec1.subject, "Maths");
+       rec1.percentage = 86.50;
  
        printf("Union record1 values example\n");
-       printf(" Name       : %s \n", record1.name);
-       printf(" Subject    : %s \n", record1.subject);
-       printf(" Percentage : %f \n\n", record1.percentage);
+       printf(" Name       : %s \n", rec1.name);
+       printf(" Subject    : %s \n", rec1.subject);
+       printf(" Percentage : %f \n\n", rec1.percentage);
  
     // assigning values to record2 union variable
        printf("Union record2 values example\n");
-       //strcpy(record2.name, "Mani");
-       record2.name = "ashraf";
-       printf(" Name       : %s \n", record2.name);
+       strcpy(rec2.name, "farhan");
+       //rec2->name = "ashraf";
+       printf(" Name       : %s \n", rec2.name);
  
-       strcpy(record2.subject, "Physics");
-       printf(" Subject    : %s \n", record2.subject);
+       strcpy(rec2.subject, "Physics");
+       printf(" Subject    : %s \n", rec2.subject);
  
-       record2.percentage = 99.50;
-       printf(" Percentage : %.1f \n", record2.percentage);
+       rec2.percentage = 60.50;
+       printf(" Percentage : %.1f \n", rec2.percentage);
        return 0;
 }

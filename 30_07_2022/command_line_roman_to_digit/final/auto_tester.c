@@ -1,33 +1,37 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<unistd.h>
+#include <string.h>
 
 
 
 int main()
 {
-    char *filename = "input.txt";
-    FILE *fp = fopen(filename, "r");
 
-    if (fp == NULL)
-    {
-        printf("Error: could not open file %s", filename);
-        return 1;
-    }
-
-    // reading line by line, max 256 bytes
-    const unsigned MAX_LENGTH = 256;
-    char buffer[MAX_LENGTH];
-
-    while (fgets(buffer, MAX_LENGTH, fp))
-    {
-        printf("%s", buffer);
-        char *args[]={"./test",buffer,NULL};
-        printf("%s", *args);
-        execv(args[0],args);
-}
-    // close the file
-    fclose(fp);
+	FILE *fptr = NULL;
+	char *line;
+	size_t n=0;
+	int i;
+	
+	
+	fptr = fopen("input.txt", "r");
+	
+	while(getline(&line, &n, fptr) != -1)
+	{
+		
+		//while(line[i] != '\n')
+		//{ 
+			//printf("%ld -- %s", strlen(line), line);
+			
+			execl("./test",line, NULL);
+			
+			//i++;
+		
+        		
+		//}
+		
+		//i=0;
+	}
 
 
 

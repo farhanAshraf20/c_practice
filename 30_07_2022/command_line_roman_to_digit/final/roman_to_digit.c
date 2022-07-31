@@ -16,6 +16,7 @@ char *fun_input;
 
 int max = 1000;							
 int sum = 0;
+int count_I = 0, count_X = 0, count_C = 0, count_V = 0, count_L = 0, count_D = 0;
 
 int input_check();
 int function_check(char *fun_input);
@@ -27,15 +28,18 @@ int main(int argc, char* argv[])					// main function
 	printf("No of argument : %d \n",argc);
 	printf("Argument No1 :%s \n",*argv);
 	
-	*argv = *(argv+1);
+	//*argv = *(argv+1);
+	//printf("Argument No2 :%s \n",*argv);
+	//printf("Argument No2 :%s \n",argv[1]);				// for only command line
 	
-	printf("Argument No2 :%s \n",*argv);
+	//fun_input = *argv;
+	//fun_input = argv[1];						// for only command line
 	
-	fun_input = *argv;						//command line input to char pointer
+	fun_input = argv[0];						//command line input to char pointer
     	
 	if (input_check() == 0)
 	{
-		printf("\n-------------------------------------------------------\n");
+		printf("-------------------------------------------------------\n");
 		function_check(fun_input);
 	}
 	else
@@ -57,12 +61,16 @@ int input_check()							//check input function
 	
 	
 	input = fun_input ;
-    	printf("fun input :%s",input);
+    	
+    	//printf("fun input :%s",input);
+    	
 	size = strlen(input);
+		
+	//printf("\nsize ...: %d \n",size);
 	
-	printf("\nsize : %d \n",size);
+	//for (int i = 0; i < size; i++)				// for only command line
 	
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size-1; i++)
 	{
 		for (int j = 0; j < 7; j++)
 		{
@@ -99,8 +107,6 @@ int function_check(char *fun_input)					// code locic function
 	//printf("\nfunction input : %s",fun_input);
 	
 	static int i=0;						//for use input Traverse
-	 
-	int count_I = 0, count_X = 0, count_C = 0, count_V = 0, count_L = 0, count_D = 0;
   
 	switch (fun_input[i])
 	{
@@ -215,13 +221,14 @@ int function_check(char *fun_input)					// code locic function
 	
 	i++;							// Shifting Input char pointer 
 	
-	if (fun_input[i] !='\0')
+	//if (fun_input[i] !='\0')				// for only command line
+	if (fun_input[i+1] !='\0')
 	{
 		function_check(fun_input);
 	}
 	else
 	{
-		if ((count_I <= max_no) && (count_C <= max_no) && (count_X <= max_no) && (count_V <= min_no) && (count_L <= min_no) && (count_D <= min_no))
+		if ((count_I <= max_no) && (count_C <= max_no) && (count_X <= max_no) && (count_V <= 1) && (count_L <= min_no) && (count_D <= min_no))
 		{
 			printf("\nInterger is : %d\n", sum);
 		}

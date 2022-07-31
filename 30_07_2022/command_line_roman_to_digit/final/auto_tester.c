@@ -4,66 +4,22 @@
 #include <string.h>
 
 
-
 int main()
 {
 
 	FILE *fptr = NULL;
 	char *line;
-	size_t n=0;
-	int i;
-	
+	size_t n=0;       // int data type give warning // unsigned integral type
 	
 	fptr = fopen("input.txt", "r");
 	
 	while(getline(&line, &n, fptr) != -1)
 	{
 		
-		//while(line[i] != '\n')
-		//{ 
-			//printf("%ld -- %s", strlen(line), line);
-			
-			execl("./test",line, NULL);
-			
-			//i++;
-		
-        		
-		//}
-		
-		//i=0;
+		execl("./test",line, NULL);	// calling another executable file
+        	
 	}
 
-
-
-
-
-/*
-	FILE    *textfile;
-	char    ch;
-
-	textfile = fopen("input.txt", "r");
-	
-	if(textfile == NULL)
-	{
-		return 1;
-	}
-	
-
-	while((ch = fgetc(textfile))!=EOF) 
-	{
-		//putchar(ch);
-		printf("input %c\n",ch);
-		char *args[]={"./test","VI",NULL};
-        	execv(args[0],args);
-	}
-*/
-
-        //A null terminated array of character
-        //pointers
-        
-         //execv(args,args);
-         
-	//fclose(textfile);
         printf("Ending-----");
      
     return 0;

@@ -1,6 +1,6 @@
 /*
 Roman to digit code 
-I to M (1 to 1000)
+Input we can give : I to M (1 to 1000)
 
 */
 
@@ -18,16 +18,15 @@ int max = 1000;
 int sum = 0;
 int count_I = 0, count_X = 0, count_C = 0, count_V = 0, count_L = 0, count_D = 0;
 
-int input_check();
+int input_check(void);
 int function_check(char *fun_input);
+int file_write(void);
 
 
 int main(int argc, char* argv[])					// main function
 {
 
-	printf("No of argument : %d \n",argc);
-	printf("Argument No1 :%s \n",*argv);
-	
+		
 	//*argv = *(argv+1);
 	//printf("Argument No2 :%s \n",*argv);
 	//printf("Argument No2 :%s \n",argv[1]);				// for only command line
@@ -52,7 +51,7 @@ int main(int argc, char* argv[])					// main function
 }
 
 
-int input_check()							//check input function
+int input_check(void)							//check input function
 {	
 
 	char *input;
@@ -228,9 +227,10 @@ int function_check(char *fun_input)					// code locic function
 	}
 	else
 	{
-		if ((count_I <= max_no) && (count_C <= max_no) && (count_X <= max_no) && (count_V <= 1) && (count_L <= min_no) && (count_D <= min_no))
+		if ((count_I <= max_no) && (count_C <= max_no) && (count_X <= max_no) && (count_V <= min_no) && (count_L <= min_no) && (count_D <= min_no))
 		{
 			printf("\nInterger is : %d\n", sum);
+			file_write();
 		}
 		else
 		{
@@ -241,4 +241,16 @@ int function_check(char *fun_input)					// code locic function
 	return 0;
 }
 
+
+int file_write(void)
+{
+	FILE *out=fopen("output.txt","w");
+	//fputs(fun_input,out);
+	
+	fprintf(out,"Input : %sOutput : %d\n",fun_input,sum);
+	
+	fclose(out);
+
+return 0;
+}
 

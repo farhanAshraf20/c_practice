@@ -21,6 +21,7 @@ int count_I = 0, count_X = 0, count_C = 0, count_V = 0, count_L = 0, count_D = 0
 
 int input_check(void);
 int function_check(char *fun_input);
+int file_read(void);
 int file_write(void);
 
 
@@ -241,6 +242,15 @@ int function_check(char *fun_input)					// code locic function
 
 	return 0;
 }
+
+int file_read(void)
+{
+
+
+
+return 0;
+}
+
 
 
 int file_write(void)

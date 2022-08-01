@@ -15,8 +15,8 @@ int main()
 	
 	while(getline(&line, &n, fptr) != -1)
 	{
-		
-		execl("./test",line, NULL);	// calling another executable file
+		//printf("%s",line);
+		execl("./test",linex, NULL);	// calling another executable file
         	
 	}
 

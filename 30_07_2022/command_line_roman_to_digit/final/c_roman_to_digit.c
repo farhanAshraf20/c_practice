@@ -35,7 +35,7 @@ int main(int argc, char* argv[])					// main function
 	//fun_input = *argv;
 	//fun_input = argv[1];						// for only command line
 	
-	fun_input = argv[0];						//command line input to char pointer
+	fun_input = argv[1];						//command line input to char pointer
     	
 	if (input_check() == 0)
 	{
@@ -70,7 +70,8 @@ int input_check(void)							//check input function
 	
 	//for (int i = 0; i < size; i++)				// for only command line
 	
-	for (int i = 0; i < size-1; i++)
+	//for (int i = 0; i < size-1; i++)
+	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < 7; j++)
 		{
@@ -222,7 +223,8 @@ int function_check(char *fun_input)					// code locic function
 	i++;							// Shifting Input char pointer 
 	
 	//if (fun_input[i] !='\0')				// for only command line
-	if (fun_input[i+1] !='\0')
+	//if (fun_input[i+1] !='\0')
+	if (fun_input[i] !='\0')
 	{
 		function_check(fun_input);
 	}

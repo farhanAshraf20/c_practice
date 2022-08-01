@@ -1,2 +1,1 @@
-Input : I
-Output : 1
+Input : IVOutput : 4

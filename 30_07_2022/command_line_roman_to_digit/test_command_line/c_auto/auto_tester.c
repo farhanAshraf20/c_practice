@@ -25,23 +25,20 @@ int main()
 	//	buffer=line;
 	//	i++;
 	//}
-		buffer=line;
 		i++;
 
         	while(fgets(line, sizeof(line), fptr) != NULL)
-        	printf("Content = %s\n", line);
-        	
- 
-        // Checking if character is not EOF.
-        // If it is EOF stop eading.
-    	//} while (line != EOF);
-	
-	
-	for(int val = 0; val < i; val++)
-	{
-		printf("Buffer = %s\n", buffer);
-	}	
-
+        	{
+        		printf("size of input : %ld : Content = %s",strlen(line)-1,line);
+        		
+        		
+        		
+        		
+        		
+        		
+        		
+        		
+        	}
 	
 	fclose(fptr);
 	

@@ -1,3 +1,10 @@
+/*
+Roman to digit code 
+using command line 
+Input we can give : I to M (1 to 1000)
+
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

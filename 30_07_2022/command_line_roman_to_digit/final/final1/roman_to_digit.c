@@ -1,11 +1,10 @@
 /*
-Roman to digit code 
-using command line 
-Input we can give : I to M (1 to 1000)
+Roman To Digit code( I to M ) 
+code reading input from .txt file and store it in another .txt file
+input (IVXLCDM) should be the combination of only this alphabates in upper case .
 
 */
-
-#include <stdio.h>
+#include<stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -15,41 +14,62 @@ Input we can give : I to M (1 to 1000)
 char fix_letter[] = "IVXLCDM";
 char *fun_input;
 
-int max = 1000;							
-int sum = 0;
+int fun_i;
+int max;							
+int sum;
 int count_I = 0, count_X = 0, count_C = 0, count_V = 0, count_L = 0, count_D = 0;
 
 int input_check(void);
 int function_check(char *fun_input);
-int file_read(void);
 int file_write(void);
 
 
-int main(int argc, char* argv[])					// main function
+int main(int argc, char* argv[])
 {
-
+	char line[1000];
 		
-	//*argv = *(argv+1);
-	//printf("Argument No2 :%s \n",*argv);
-	//printf("Argument No2 :%s \n",argv[1]);				// for only command line
+	FILE *fptr;
+	fptr = fopen(argv[1], "r");					//. txt file opening 
 	
-	//fun_input = *argv;
-	//fun_input = argv[1];						// for only command line
+	if(fptr == NULL)
+	{
+		printf("Error in file opening");		
+	}
 	
-	fun_input = argv[0];						//command line input to char pointer
-    	
-	if (input_check() == 0)
+	//printf("No of argument : %d \n",argc);
+	//printf("Argument No1 :%s \n",argv[0]);	
+	printf("Argument No2 :%s \n",argv[1]);
+	
+	
+	
+	while(fgets(line,sizeof(line), fptr) != NULL)			//reading input line by line from .txt file
 	{
-		printf("-------------------------------------------------------\n");
-		function_check(fun_input);
+		
+		fun_i=0;
+		max = 1000;							
+		sum = 0;
+		count_I = 0, count_X = 0, count_C = 0, count_V = 0, count_L = 0, count_D = 0;
+		
+				
+		
+		fun_input = line;					//assigning input
+    		fun_i=0;
+		if (input_check() == 0)					//checking input whether it is correct or not
+		{
+			//printf("-------------------------------------------------------\n");
+			function_check(fun_input);			//conversion function call
+		}
+		else
+		{
+			exit(0);
+		}
+		
 	}
-	else
-	{
-		exit(0);
-	}
+	
+        	
+        fclose(fptr);							//closing input file
 
-
-    return 0;
+return 0;
 }
 
 
@@ -61,15 +81,14 @@ int input_check(void)							//check input function
 	int flag = 1;
 	
 	
-	input = fun_input ;
-    	
-    	//printf("fun input :%s",input);
+	input = fun_input ;						
+    	printf("\n------------------------------------\n");
+    	printf("fun input :%s",input);
     	
 	size = strlen(input);
 		
-	//printf("\nsize ...: %d \n",size);
+	//printf("\nsize ... : %d \n",size);
 	
-	//for (int i = 0; i < size; i++)				// for only command line
 	
 	for (int i = 0; i < size-1; i++)
 	{
@@ -78,7 +97,7 @@ int input_check(void)							//check input function
 			if (fix_letter[j] == input[i])
 			{
 				flag = 0;
-				// printf("%c ",input[i]);
+				//printf("check input : %c \n",input[i]);
 				break;
 			}
 			else
@@ -102,128 +121,116 @@ int input_check(void)							//check input function
 }
 
 
-
 int function_check(char *fun_input)					// code locic function
 {
 	//printf("\nfunction input : %s",fun_input);
 	
-	static int i=0;						//for use input Traverse
-  
-	switch (fun_input[i])
+	//printf("\nfunction input test for i : %d\n",fun_i);
+  	printf("\nfunction input test for string: %c\n",fun_input[fun_i]);
+  	
+  	printf("\nfunction input size  test for string: %ld\n",strlen(fun_input));
+  	
+  	
+  	
+	switch (fun_input[fun_i])
 	{
 		case 'I':
 		{
-		    count_I++;
-		    sum += 1;
-		    max = 1;
-		    // printf("\nvalue of max :%d\n",max);
-		    break;
+			count_I++;		
+			if(fun_input[fun_i+1]=='V')
+			{
+				sum += 4;
+				fun_i++;
+				break;
+			}
+		
+			if(fun_input[fun_i+1]=='X')
+			{
+				sum += 9;
+				fun_i++;
+				break;
+			}
+			sum += 1;
+			break;
 		}
 		case 'V':
 		{
-		    count_V++;
-
-		    if (max >= 5)
-		    {
+			count_V++;
 			sum += 5;
-			max = 5;
-		    }
-		    else if (sum == 1)
-		    {
-			sum = 5 - sum;
-		    }
-		    else
-		    {
-			count_I = count_I + 2;
-		    }
-
-		    break;
+			break;
 		}
 		case 'X':
 		{
-		    count_X++;
-		    if (max >= 10)
-		    {
+			count_X++;
+			if(fun_input[fun_i+1]=='L')
+			{
+				sum += 40;
+				fun_i++;
+				break;
+			}
+			if(fun_input[fun_i+1]=='C')
+			{
+				sum += 90;
+				fun_i++;
+				break;
+			}
 			sum += 10;
-			max = 10;
-		    }
-		    else if (sum == 1)
-		    {
-			sum = 10 - sum;
-		    }
-		    else
-		    {
-			count_X = count_X + 2;
-		    }
-
-		    break;
+			break;
 		}
+
 		case 'L':
 		{
-		    count_L++;
-		    if (max >= 50)
-		    {
+			count_L++;
 			sum += 50;
-			max = 50;
-		    }
-		    else
-		    {
-			sum = 50 - sum;
-		    }
-		    break;
+			break;
 		}
 		case 'C':
 		{
-		    count_C++;
-		    if (max >= 100)
-		    {
+			count_C++;
+			if(fun_input[fun_i+1]=='D')
+			{
+				sum += 400;
+				fun_i++;
+				break;
+			}
+			if(fun_input[fun_i+1]=='M')
+			{
+				sum += 900;
+				fun_i++;
+				break;
+			}
 			sum += 100;
-			max = 100;
-		    }
-		    else
-		    {
-			sum = 100 - sum;
-		    }
-		    break;
+			break;
 		}
 		case 'D':
 		{
-		    count_D++;
-		    if (max >= 500)
-		    {
+			count_D++;
 			sum += 500;
-			max = 500;
-		    }
-		    else
-		    {
-			sum = 500 - sum;
-		    }
-		    break;
+			break;
 		}
 		case 'M':
 		{
-		    if (max >= 1000)
-		    {
 			sum += 1000;
-			max = 1000;
-		    }
-		    else
-		    {
-			sum = 1000 - sum;
-		    }
-		    break;
+			break;
 		}
 		default:
-		{
-		    printf("\nInvalid entry...\n");
-		    break;
-		}
+			printf("\nInvalid entry\n");
+			break;
 	}
 	
-	i++;							// Shifting Input char pointer 
+	
+	fun_i++;
+								// Shifting Input char pointer 
+	//printf("the i valu %d\n",fun_i);
 	
 	//if (fun_input[i] !='\0')				// for only command line
-	if (fun_input[i+1] !='\0')
+	
+	/*if (fun_input[fun_i + 1] !='\0')
+	{
+		function_check(fun_input);
+	}*/
+	
+	if(strlen(fun_input) > (fun_i+1))
 	{
 		function_check(fun_input);
 	}
@@ -231,7 +238,8 @@ int function_check(char *fun_input)					// code locic function
 	{
 		if ((count_I <= max_no) && (count_C <= max_no) && (count_X <= max_no) && (count_V <= min_no) && (count_L <= min_no) && (count_D <= min_no))
 		{
-			printf("\nInterger is : %d\n", sum);
+			printf("Interger is : %d\n", sum);
+			printf("------------------------------------\n");
 			file_write();
 		}
 		else
@@ -243,25 +251,16 @@ int function_check(char *fun_input)					// code locic function
 	return 0;
 }
 
-int file_read(void)
+
+int file_write(void)								//writing output file
 {
-
-
-
-return 0;
-}
-
-
-
-int file_write(void)
-{
-	FILE *out=fopen("output.txt","w");
+	//FILE *out=fopen("output.txt","w");					//overrite the output in .txt file
+	FILE *out=fopen("output.txt","a+");					//append output to the .txt file
 	//fputs(fun_input,out);
-	
-	fprintf(out,"Input : %sOutput : %d\n",fun_input,sum);
-	
-	fclose(out);
+	fprintf(out,"\n-----------------------------------------\n");
+	fprintf(out,"Input  : %sOutput : %d\n",fun_input,sum);
+	fprintf(out,"-----------------------------------------\n");
+	fclose(out);								//closing .txt file
 
 return 0;
 }
-

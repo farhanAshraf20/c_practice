@@ -130,112 +130,73 @@ int function_check(char *fun_input)					// code locic function
 	switch (fun_input[fun_i])
 	{
 		case 'I':
+		if(fun_input[fun_i+1]=='V')
 		{
-		    count_I++;
-		    sum += 1;
-		    max = 1;
-		    // printf("\nvalue of max :%d\n",max);
-		    break;
+			sum += 4;
+			fun_i++;
+			break;
 		}
+
+		if(fun_input[fun_i+1]=='X')
+		{
+			sum += 9;
+			fun_i++;
+			break;
+		}
+		sum += 1;
+		break;
+
 		case 'V':
-		{
-		    count_V++;
+		sum += 5;
+		break;
 
-		    if (max >= 5)
-		    {
-			sum += 5;
-			max = 5;
-		    }
-		    else if (sum == 1)
-		    {
-			sum = 5 - sum;
-		    }
-		    
-		    else
-		    {
-			count_I = count_I + 2;
-		    }
-		    break;
-		}
 		case 'X':
+			if(fun_input[fun_i+1]=='L')
+			{
+			sum += 40;
+			fun_i++;
+			break;
+		}
+		if(fun_input[fun_i+1]=='C')
 		{
-		    count_X++;
-		    if (max >= 10)
-		    {
-			sum += 10;
-			max = 10;
-		    }
-		    else if (sum == 1)
-		    {
-			sum = 10 - sum;
-		    }
-		    else
-		    {
-			count_X = count_X + 2;
-		    }
+			sum += 90;
+			fun_i++;
+			break;
+		}
+		sum += 10;
+		break;
 
-		    break;
-		}
 		case 'L':
-		{
-		    count_L++;
-		    if (max >= 50)
-		    {
-			sum += 50;
-			max = 50;
-		    }
-		    else
-		    {
-			sum = 50 - sum;
-		    }
-		    break;
-		}
+		sum += 50;
+		break;
+
 		case 'C':
-		{
-		    count_C++;
-		    if (max >= 100)
-		    {
+			if(fun_input[fun_i+1]=='D')
+			{
+				sum += 400;
+				fun_i++;
+				break;
+			}
+			if(fun_input[fun_i+1]=='M')
+			{
+				sum += 900;
+				fun_i++;
+				break;
+			}
 			sum += 100;
-			max = 100;
-		    }
-		    else
-		    {
-			sum = 100 - sum;
-		    }
-		    break;
-		}
+			break;
+
 		case 'D':
-		{
-		    count_D++;
-		    if (max >= 500)
-		    {
 			sum += 500;
-			max = 500;
-		    }
-		    else
-		    {
-			sum = 500 - sum;
-		    }
-		    break;
-		}
+			break;
+
 		case 'M':
-		{
-		    if (max >= 1000)
-		    {
 			sum += 1000;
-			max = 1000;
-		    }
-		    else
-		    {
-			sum = 1000 - sum;
-		    }
-		    break;
-		}
+			break;
+
 		default:
-		{
-		    printf("\nInvalid entry...\n");
-		    break;
-		}
+			printf("\nInvalid entry\n");
+			break;
 	}
 	
 	

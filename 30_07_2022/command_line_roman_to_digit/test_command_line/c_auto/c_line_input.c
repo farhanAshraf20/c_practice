@@ -8,11 +8,9 @@
 char fix_letter[] = "IVXLCDM";
 char *fun_input;
 
-//int i=0;
-
-int fun_i=0;
-int max = 1000;							
-int sum = 0;
+int fun_i;//=0;
+int max;// = 1000;							
+int sum;// = 0;
 int count_I = 0, count_X = 0, count_C = 0, count_V = 0, count_L = 0, count_D = 0;
 
 int input_check(void);
@@ -23,9 +21,7 @@ int file_write(void);
 int main(int argc, char* argv[])
 {
 	char line[1000];
-	//int i=0;
-	//size_t n=0;
-	
+		
 	FILE *fptr;
 	fptr = fopen(argv[1], "r");
 	
@@ -42,18 +38,15 @@ int main(int argc, char* argv[])
 	
 	while(fgets(line,sizeof(line), fptr) != NULL)
 	{
-		//printf("Content = %s", line);
-		//printf("farhan");
-		//-----------------------------------------------------
+		
 		fun_i=0;
 		max = 1000;							
 		sum = 0;
 		count_I = 0, count_X = 0, count_C = 0, count_V = 0, count_L = 0, count_D = 0;
 		
-		//-----------------------------------------------------
-			
+				
 		
-		fun_input = line;						//command line input to char pointer
+		fun_input = line;				//command line input to char pointer
     		fun_i=0;
 		if (input_check() == 0)
 		{
@@ -72,7 +65,6 @@ int main(int argc, char* argv[])
 
 return 0;
 }
-
 
 
 int input_check(void)							//check input function
@@ -123,14 +115,12 @@ int input_check(void)							//check input function
 	
 }
 
-//int fun_i=0;
 
 int function_check(char *fun_input)					// code locic function
 {
 	//printf("\nfunction input : %s",fun_input);
 	
-	//static int fun_i=0;						//for use input Traverse
-  	printf("\nfunction input test for i : %d\n",fun_i);
+	//printf("\nfunction input test for i : %d\n",fun_i);
   	printf("\nfunction input test for string: %c\n",fun_input[fun_i]);
   	
   	printf("\nfunction input size  test for string: %ld\n",strlen(fun_input));
@@ -160,11 +150,11 @@ int function_check(char *fun_input)					// code locic function
 		    {
 			sum = 5 - sum;
 		    }
+		    
 		    else
 		    {
 			count_I = count_I + 2;
 		    }
-
 		    break;
 		}
 		case 'X':
@@ -243,7 +233,6 @@ int function_check(char *fun_input)					// code locic function
 		}
 		default:
 		{
-		    //i=0;
 		    printf("\nInvalid entry...\n");
 		    break;
 		}
@@ -251,17 +240,10 @@ int function_check(char *fun_input)					// code locic function
 	
 	
 	fun_i++;
-	/*	
-	if((strlen(fun_input)-2) == i)
-  	{
-  		//printf("\n\nhello farhan!!!!\n\n");
-  		i=0;
-  	}
-  	*/
-							// Shifting Input char pointer 
-	printf("the i valu %d\n",fun_i);
-	//if (fun_input[i] !='\0')				// for only command line
+								// Shifting Input char pointer 
+	//printf("the i valu %d\n",fun_i);
 	
+	//if (fun_input[i] !='\0')				// for only command line
 	
 	/*if (fun_input[fun_i + 1] !='\0')
 	{
@@ -277,7 +259,6 @@ int function_check(char *fun_input)					// code locic function
 		if ((count_I <= max_no) && (count_C <= max_no) && (count_X <= max_no) && (count_V <= min_no) && (count_L <= min_no) && (count_D <= min_no))
 		{
 			printf("Interger is : %d\n", sum);
-			//fun_i=0;
 			printf("------------------------------------\n");
 			file_write();
 		}

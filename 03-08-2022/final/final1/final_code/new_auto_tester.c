@@ -1,3 +1,9 @@
+/*
+Roman To Digit code( I to M ) 
+code reading input from .txt file and store it in another .txt file
+input (IVXLCDM) should be the combination of only this alphabates in upper case .
+
+*/
 #include<stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -12,7 +18,6 @@ int fun_i;
 int max;							
 int sum;
 int count_I = 0, count_X = 0, count_C = 0, count_V = 0, count_L = 0, count_D = 0;
-//int count_I = 0, count_X = 0, count_C = 0, count_V = 0, count_L = 0, count_D = 0;
 
 int input_check(void);
 int function_check(char *fun_input);
@@ -24,11 +29,11 @@ int main(int argc, char* argv[])
 	char line[1000];
 		
 	FILE *fptr;
-	fptr = fopen(argv[1], "r");
+	fptr = fopen(argv[1], "r");					//. txt file opening 
 	
 	if(fptr == NULL)
 	{
-		printf("Error in file opening");
+		printf("Error in file opening");		
 	}
 	
 	//printf("No of argument : %d \n",argc);
@@ -37,7 +42,7 @@ int main(int argc, char* argv[])
 	
 	
 	
-	while(fgets(line,sizeof(line), fptr) != NULL)
+	while(fgets(line,sizeof(line), fptr) != NULL)			//reading input line by line from .txt file
 	{
 		
 		fun_i=0;
@@ -47,12 +52,12 @@ int main(int argc, char* argv[])
 		
 				
 		
-		fun_input = line;				//command line input to char pointer
+		fun_input = line;					//assigning input
     		fun_i=0;
-		if (input_check() == 0)
+		if (input_check() == 0)					//checking input whether it is correct or not
 		{
 			//printf("-------------------------------------------------------\n");
-			function_check(fun_input);
+			function_check(fun_input);			//conversion function call
 		}
 		else
 		{
@@ -62,7 +67,7 @@ int main(int argc, char* argv[])
 	}
 	
         	
-        fclose(fptr);
+        fclose(fptr);							//closing input file
 
 return 0;
 }
@@ -76,7 +81,7 @@ int input_check(void)							//check input function
 	int flag = 1;
 	
 	
-	input = fun_input ;
+	input = fun_input ;						
     	printf("\n------------------------------------\n");
     	printf("fun input :%s",input);
     	
@@ -84,7 +89,6 @@ int input_check(void)							//check input function
 		
 	//printf("\nsize ... : %d \n",size);
 	
-	//for (int i = 0; i < size; i++)				// for only command line
 	
 	for (int i = 0; i < size-1; i++)
 	{
@@ -248,15 +252,15 @@ int function_check(char *fun_input)					// code locic function
 }
 
 
-int file_write(void)
+int file_write(void)								//writing output file
 {
-	//FILE *out=fopen("output.txt","w");
-	FILE *out=fopen("output.txt","a+");
+	//FILE *out=fopen("output.txt","w");					//overrite the output in .txt file
+	FILE *out=fopen("output.txt","a+");					//append output to the .txt file
 	//fputs(fun_input,out);
 	fprintf(out,"\n-----------------------------------------\n");
 	fprintf(out,"Input  : %sOutput : %d\n",fun_input,sum);
 	fprintf(out,"-----------------------------------------\n");
-	fclose(out);
+	fclose(out);								//closing .txt file
 
 return 0;
 }
